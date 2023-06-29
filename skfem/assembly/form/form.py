@@ -102,6 +102,9 @@ class Form:
                               "numpy arrays to assemble", DeprecationWarning)
                 # for backwards-compatibility
                 w[k] = DiscreteField(w[k])
+            elif isinstance(w[k], (int, float, complex)):
+                # scalar numeric values are okay
+                continue
             else:
                 raise ValueError("The given type '{}' for the list of extra "
                                  "form parameters w cannot be converted to "
